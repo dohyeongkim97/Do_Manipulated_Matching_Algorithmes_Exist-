@@ -10,9 +10,10 @@ Specially, I'll analyse the question, "If a player is on a winning streak, is th
 
 Study plan: 
   1. Data Collection
+
      Gather match history data using the official Riot API, focusing on solo queue ranked games.
   
-  2. Players Classification
+  3. Players Classification
 
      Devide players into two groupes based on their recent match history.
 
@@ -39,8 +40,8 @@ Study plan:
      N(mu = 10, sigma^2 = 5)
 
   10. Statistical Testing
-
-    Analyse the histogram of win counts for both groupes. If players on winning streaks show statistically significant skew, e.g lower win rates, more trolls in their teams, this could suggest matchmaking manipulation.
+     
+      Analyse the histogram of win counts for both groupes. If players on winning streaks show statistically significant skew, e.g lower win rates, more trolls in their teams, this could suggest matchmaking manipulation.
 
 
 Packages: 
