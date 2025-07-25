@@ -8,7 +8,16 @@ Therefore, this study investigates whether such a system exists.
 
 Specially, I'll analyse the question, "If a player is on a winning streak, is there matchmaking still fair?"
 
+Theory Basis. H0: There are no manipulated matching algorithmes.
+
+Thus, Always the expected winning rates are 0.5.
+
+Match data will be collected upon platinum tier.
+
 Study plan: 
+
+###  METHOD I. Normality test by number of wins and losses.
+
   1. Data Collection
 
      Gather match history data using the official Riot API, focusing on solo queue ranked games.
@@ -43,5 +52,26 @@ Study plan:
      
       Analyse the histogram of win counts for both groupes. If players on winning streaks show statistically significant skew, e.g lower win rates, more trolls in their teams, this could suggest matchmaking manipulation.
 
+      In particular, kurtosis (which is 3 for a normal distribution) will be a key metric. Anomalously high kurtosis (e.g., 5 or 6) would serve as strong evidence of manipulation.
 
+###  METHOD II. Analyze whether, in matches involving players on a winning streak, there is a significant imbalance between the average tiers of the two teams.
+
+  1. Collect game data to track users' winning and losing streaks, then compare the tier differences between allies and enemies for each user.
+
+     Track each player's win/loss streak and compare the average tier (or MMR proxy) of their allies versus enemies.
+
+     This method investigates whether players on winning streaks are systematically placed on weaker teams.
+
+###  METHOD III. 
+
+  1. Compare the expected win rates trends for each number of consecutive wins.
+
+     Analyze how the expected win rate of the next game varies by the current streak length.
+
+     Question: Does a winning or losing streak affect the likelihood of winning the next game?
+
+     If matchmaking is unbiased and players are independent, the win rate should consistently hover around 0.5 mathematically(p==0.5).
+
+     However, due to external factors such as fatigue or tilt, we hypothesize that players on extended streaks may show win rates in the mid-to-high 40% range, deviating from the theoretical 50%.
+     
 Packages: 
