@@ -78,6 +78,9 @@ if a players who has same tier with their skill, there winning rate after win st
      If matchmaking is unbiased and players are independent, the win rate should consistently hover around 0.5 mathematically(p==0.5).
 
      However, due to external factors such as fatigue or tilt, we hypothesize that players on extended streaks may show win rates in the mid-to-high 40% range, deviating from the theoretical 50%.
+
+### METHOD IV.
+  1. Using DTMC Model.
      
 Packages: 
 
@@ -170,4 +173,11 @@ Binomial(n = 20, p = 0.5), N(mu = 10, sigma^2 = 5)
 그러나 실제 게임 환경에서는 피로, 멘탈 붕괴(‘틸트’) 등 외적 요인으로 인해, 연속적으로 게임을 플레이한 유저가 중반~후반 40%대의 승률을 보일 가능성이 있다는 가설을 설정한다.
 
 따라서 이 방법론은 방법론 II의 결과와 상충되지 않는 범위 내에서 해석하고 검증을 진행한다.
+
+
+방법론 IV. 마코프 체인?
+
+방법론 1에서 제기된 문제를 해결할 수 있을지를 더 검토해 볼 필요가 있음. 방법론 2와 함께 사용하는 것을 고려.
+
+
 Packages:
