@@ -37,23 +37,24 @@ Study plan:
   6. Troll Indicators
 
      Additional features such as low KDA, irregular builds, AFK behavior, or excessive deaths will be used to detect 'troll' behavior in teammates.
-~~
-  8. Fair Matchmaking Hypothesis
 
-     If the matchmaking system is fair, the players should have approximately equal win probabilities regardless of streak status.
+<s>
+  7. Fair Matchmaking Hypothesis
 
-     Thus, over a large samples, their nmbers of wins in 20 games should follow a binomial distribution, and normal distribution which is derived from binomial distribution.
+  If the matchmaking system is fair, the players should have approximately equal win probabilities regardless of streak status.
 
-     Binomial(n = 20, p = 0.5)
+  Thus, over a large samples, their nmbers of wins in 20 games should follow a binomial distribution, and normal distribution which is derived from binomial distribution.
 
-     N(mu = 10, sigma^2 = 5)
+  Binomial(n = 20, p = 0.5)
 
-  10. Statistical Testing
+  N(mu = 10, sigma^2 = 5)
+
+  8. Statistical Testing
      
       Analyse the histogram of win counts for both groupes. If players on winning streaks show statistically significant skew, e.g lower win rates, more trolls in their teams, this could suggest matchmaking manipulation.
 
       In particular, kurtosis (which is 3 for a normal distribution) will be a key metric. Anomalously high kurtosis (e.g., 5 or 6) would serve as strong evidence of manipulation.
-~~
+</s>
 
 if a players who has same tier with their skill, there winning rate after win streak/lose streak will changes naturally.
 
@@ -126,7 +127,7 @@ Do_Manipulated_Matching_Algorithmes_Exist / 리그 오브 레전드 매칭 알�
 
 이상치 KDA, 비정상적인 아이템 빌드, 게임 도중 이탈(AFK), 과도한 데스 등은 팀 내 '트롤링' 행동을 나타내는 지표로 활용한다.
 
-~~
+<s>
 공정 매칭 가설
 
 매칭 시스템이 공정하다면, 연승 여부와 무관하게 플레이어는 동등한 승률을 가져야 한다.
@@ -142,7 +143,7 @@ Binomial(n = 20, p = 0.5), N(mu = 10, sigma^2 = 5)
 연승 중인 그룹에서 승률이 비정상적으로 낮거나, 트롤 팀원이 유의하게 많다는 결과가 도출된다면, 이는 매칭 조작 가능성을 시사할 수 있다.
 
 특히, **첨도(kurtosis)**는 이 분석에서 핵심 지표로 작용한다. 정규분포의 첨도는 3인데, 5나 6과 같은 이례적으로 높은 첨도가 관측될 경우, 이는 매칭 알고리즘 조작의 강력한 근거가 될 수 있다.
-~~
+</s>
 
 만약 어떤 플레이어가 자기 수준에 맞는 티어를 갖고 있다면, 연승/연패 이후 변경된 지표에서의 승률은 자연스럽게 변동할 것(연승 이후 승리확률 감소 / 연패 이후 승리확률 증가)
 
