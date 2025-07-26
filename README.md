@@ -9,8 +9,10 @@ Therefore, this study investigates whether such a system exists.
 Specially, I'll analyse the question, "If a player is on a winning streak, is there matchmaking still fair?"
 
 Theory Basis. H0: There are no manipulated matching algorithmes.
-
+<s>
 Thus, Always the expected winning rates are 0.5.
+</s>
+If a player placed on higher tier as a result of win streaks, his winning rates will naturally fall cause of his skill level.
 
 Match data will be collected upon platinum tier.
 
@@ -102,8 +104,11 @@ Do_Manipulated_Matching_Algorithmes_Exist / 리그 오브 레전드 매칭 알�
 
 이론적 기반
 귀무가설(H₀): 매칭 알고리즘은 조작되어 있지 않다.
-
+<s>
 즉, 모든 플레이어의 기대 승률은 항상 0.5로 유지된다.
+</s>
+
+특정 플레이어가 연승의 결과로 높은 티어로 간다면(혹은 높은 레이팅의 유저들과 매치된다면) 그의 승률은 자연스럽게 떨어질 것.
 
 연구에서는 플래티넘 티어 이상의 매치 데이터를 수집 대상으로 삼는다.
 
