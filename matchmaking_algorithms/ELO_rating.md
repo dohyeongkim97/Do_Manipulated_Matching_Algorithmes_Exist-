@@ -1,0 +1,1 @@
+Explanation of ELO rating
