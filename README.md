@@ -60,6 +60,8 @@ Study plan:
 
 if a players who has same tier with their skill, there winning rate after win streak/lose streak will changes naturally.
 
+if there were no decline of win rates after winning streaks, then this probleme not has to be considered seriously.
+
 
 ###  METHOD II. Analyze whether, in matches involving players on a winning streak, there is a significant imbalance between the average tiers of the two teams.
 
@@ -154,6 +156,9 @@ Binomial(n = 20, p = 0.5), N(mu = 10, sigma^2 = 5)
 </s>
 
 만약 어떤 플레이어가 자기 수준에 맞는 티어를 갖고 있다면, 확률에 따른 연승/연패 이후 변경된 지표에서의 승률은 자연스럽게 변동할 것(연승 이후 승리확률 감소 / 연패 이후 승리확률 증가)
+
+확률에 따른 연승/연패 이후 승률이 상승/하락하는 지표가 나타난다면, 해당 측면에 대한 고려가 불필요할 수 있음.
+
 
 방법론 II. 아군/적군 간 티어 불균형 분석
 
