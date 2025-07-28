@@ -1,1 +1,2 @@
-Explanation of Trueskill algorithmes.
+# Trueskill Algorithm.
+

@@ -1,4 +1,4 @@
-import functions as fn
+import load_func as fn
 import time
 from dotenv import dotenv_values
 from pathlib import Path
