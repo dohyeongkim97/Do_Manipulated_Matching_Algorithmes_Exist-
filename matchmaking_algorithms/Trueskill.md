@@ -16,7 +16,7 @@ As considering the dev of performances of each team, that algorithm can calculat
 
 I exampled two teams, which have elo rating 800 and 1000, and the expected rate for the weaker was 24%. However if the two teams have huge deviations, the weaker's rate became bigger.
 
-### Basic Formulas of Trueskill Algorithmes(for simplest case; 1:1)
+### Basic Formulas of Trueskill Algorithmes(for the simplest case; 1:1)
 
 $$\mu_{winner} = \mu_{winner, prior} + \frac{\sigma^2}c\cdot v(\frac{(\mu_{winner, prior}-\mu_{loser, prior})}c\cdot\frac{\epsilon}c)$$
 
