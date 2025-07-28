@@ -28,6 +28,8 @@ $$\sigma^2_{\text{loser}} = \sigma^2_{\text{loser, prior}} \cdot \left[ 1 - \fra
 
 $$ c^2 = 2\beta^2 + \sigma^2_{winner} + \sigma^2_{loser}$$
 
+(v is the pdf of normal distribution, w is updating function(w(t) = v(t)[v(t)+t]))
+
 
 Basically, this algorithm shares same premise with ELO system. The Strongers bets a lot, and the weaker does not. 
 
