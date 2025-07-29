@@ -16,7 +16,7 @@ If a player placed on higher tier as a result of win streaks, his winning rates 
 
 Match data will be collected upon platinum tier.
 
-Study plan: 
+experiment plan: 
 
 ###  METHOD I. Normality test by number of wins and losses.
 
