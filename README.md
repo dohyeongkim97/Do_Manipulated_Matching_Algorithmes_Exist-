@@ -201,5 +201,5 @@ Packages:
 
 
 ## 라이선스 고지사항
-해당 프로젝트는 renecotyfanboy의 코드와 분석 일부(https://github.com/renecotyfanboy/leagueProject)를 차용하여 작성되었습니다.
+해당 프로젝트는 renecotyfanboy의 코드와 분석 일부([renecotyfanboy's LeagueProject](https://github.com/renecotyfanboy/LeagueProject)를 차용하여 진행되었습니다.
 해당 프로젝트는 MIT License의 규정 아래 있습니다.
