@@ -20,6 +20,9 @@ import random
 env_path = os.getcwd() + '\\.env'
 s = time.time()
 
+config = dotenv_values(env_path)
+my_api = config.get("API")
+
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
     "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -28,4 +31,4 @@ headers = {
 }
 
 #%% 
-url = f'https://kr.api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/{tier}/{division}?page={page}&api_key=RGAPI-cd6e17ed-172e-4ddc-aba8-b2bc88b29c04'
+url = f'https://kr.api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/{tier}/{division}?page={page}&api_key={my_api}'
