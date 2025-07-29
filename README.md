@@ -91,6 +91,12 @@ Packages:
 
 
 
+## Acknowledgement
+
+This project includes portions of code from [renecotyfanboy's LeagueProject](https://github.com/renecotyfanboy/LeagueProject),  
+which is licensed under the MIT License.
+
+
 ----------------------------------------
 
 
@@ -191,3 +197,9 @@ Binomial(n = 20, p = 0.5), N(mu = 10, sigma^2 = 5)
 
 
 Packages:
+
+
+
+## 라이선스 고지사항
+해당 프로젝트는 renecotyfanboy의 코드와 분석 일부(https://github.com/renecotyfanboy/leagueProject)를 차용하여 작성되었습니다.
+해당 프로젝트는 MIT License의 규정 아래 있습니다.
