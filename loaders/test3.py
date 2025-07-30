@@ -124,6 +124,7 @@ res_errors = []
 ct = 0
 for div in division:
     summoners = get_summoners_by_division(tier, div)   
+    summoners = summoners[:100]
     for i in range(len(summoners)):
         print('summoner_count:', ct)
         ct += 1
