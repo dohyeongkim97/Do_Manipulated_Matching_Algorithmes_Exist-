@@ -3,7 +3,7 @@ import os
 if os.getcwd() != 'C:\\Users\\user\\jupyter\\lol_match\\loaders':
     os.chdir('C:\\Users\\user\\jupyter\\lol_match\\loaders')
 import pandas as pd
-import load_func as fn
+import functions as fn
 import time
 from dotenv import dotenv_values
 from pathlib import Path
@@ -40,6 +40,7 @@ queue = 'RANKED_SOLO_5x5'
 def get_summoners_by_division(tier, division, queue='RANKED_SOLO_5x5', my_api=my_api):
     url = f'https://kr.api.riotgames.com/lol/league-exp/v4/entries/{queue}/{tier}/{division}?page=1&api_key={my_api}'
     res = requests.get(url, headers=headers)
+    print(res.status_code)
     time.sleep(0.85)
     return res.json() if res.status_code == 200 else []
 
@@ -58,34 +59,86 @@ def get_match_detail(match_id, my_api=my_api):
     time.sleep(0.85)
     return res.json() if res.status_code == 200 else None
 
-summoners = get_summoners_by_division(tier, division)
 #%%
+def summon_info(puuid, my_api=my_api):
+    url = f'https://kr.api.riotgames.com/lol/league/v4/entries/by-puuid/{puuid}?api_key={my_api}'
+    res = requests.get(url, headers=headers)
+    time.sleep(0.85)
 
+    for i in range(len(res.json())):
+        if res.json()[i]['queueType'] != 'RANKED_SOLO_5x5':
+            continue
+        else:
+            res = res.json()[i]
+            
+            return res
+#%%
 # review the codes below after.
 for i in range(0, 20):
     summ = summoners[i]
     puuid = summ['puuid']
-    summoner_name = fn.get_summoner_name_by_puuid(puuid) or "Unknown"
+    match_ids = get_matchlist(puuid, count=100)
+#%%
 
-    match_ids = get_matchlist(puuid, count=5)
-    for match_id in match_ids:
-        match_detail = get_match_detail(match_id)
-        if match_detail:
-            match_summary = fn.extract_match_summary(match_detail, puuid)
-            if match_summary:
-                print({
-                    "tier": tier,
-                    "division": division,
-                    "summonerName": match_summary['player_name'],
-                    "puuid": puuid,
-                    "matchId": match_id,
-                    "win": match_summary['win'],
-                    "teamMembers": match_summary['team_members'],
-                    "enemyMembers": match_summary['enemy_members']
-                })
+summoners = get_summoners_by_division(tier, division)
+#%%
+summoners = get_summoners_by_division(tier, division)
+df_summon = pd.DataFrame(summoners)
+#%%
+summoners
+#%%
+match_ids = get_matchlist(summoners[0]['puuid'])
+#%%
+matchdata = get_match_detail(match_ids[0])
+
+#%%
+matchdata['info']['participants'][1]['win']
+#%%
+matchdata['info']['participants'][1]['win']
+
+#%%
+[summoners[0]['puuid']]*10
+
+#%%
+#platinum
+tier = 'PLATINUM' 
+division = ['IV']
+df_temp = pd.DataFrame()
+
+ct = 0
+for div in division:
+    summoners = get_summoners_by_division(tier, div)   
+    for i in range(len(summoners)):
+        print('summoner_count:', ct)
+        ct += 1
+        puuid = summoners[i]['puuid']
+        match_ids = get_matchlist(puuid, count=100)
+        
+        summoner_puuid = [summoners[i]['puuid']]*10
+        ct_match = 0
+        for match in match_ids:
+            print(f'match_number_by_each_summoner {ct}:', ct_match)
+            ct_match += 1
+            matches = [match]*10
+            win_or_lose = []
+            matchdata = get_match_detail(match)
+            if matchdata:
+                participants = matchdata['metadata']['participants']
+                gameinfo = matchdata['info']
+                if gameinfo['participants'][0]['win'] == True:
+                    win_or_lose.extend([True]*5)
+                    win_or_lose.extend([False]*5)
+
+                else:
+                    win_or_lose.extend([True]*5)
+                    win_or_lose.extend([False]*5)
+
+            temp = pd.DataFrame([summoner_puuid, matches, participants, win_or_lose]).T
+            df_temp = pd.concat([df_temp, temp], ignore_index=True, axis=0)
+
+print('done')
 
 # %%
-
-# 1. get_summoners_by_division에서 유저데이터 추출 후, puuid로 매치리스트 받아오기
-# 2. puuid로 매치리스트 받아온 후(get_matchlist), 각 매치의 상세정보 받아오기(get_match_detail)
+print('done')
+# %%
 
