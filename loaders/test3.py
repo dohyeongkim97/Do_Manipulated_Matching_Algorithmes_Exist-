@@ -41,7 +41,7 @@ def get_summoners_by_division(tier, division, queue='RANKED_SOLO_5x5', my_api=my
     url = f'https://kr.api.riotgames.com/lol/league-exp/v4/entries/{queue}/{tier}/{division}?page=1&api_key={my_api}'
     res = requests.get(url, headers=headers)
     print(res.status_code)
-    time.sleep(0.85)
+    time.sleep(0.82)
     return res.json() if res.status_code == 200 else []
 
 
@@ -49,21 +49,24 @@ def get_summoners_by_division(tier, division, queue='RANKED_SOLO_5x5', my_api=my
 def get_matchlist(puuid, count=100, my_api=my_api):
     url = f'https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count={count}&api_key={my_api}'
     res = requests.get(url, headers=headers)
-    time.sleep(0.85)
-    return res.json() if res.status_code == 200 else []
-
+    time.sleep(0.82)
+    if res.status_code == 200:
+        return res.json()
+    else:
+        print(f'error occured: {res.status_code}')
+        return []
 #%%
 def get_match_detail(match_id, my_api=my_api):
     url = f'https://asia.api.riotgames.com/lol/match/v5/matches/{match_id}?api_key={my_api}'
     res = requests.get(url, headers=headers)
-    time.sleep(0.85)
+    time.sleep(0.82)
     return res.json() if res.status_code == 200 else None
 
 #%%
 def summon_info(puuid, my_api=my_api):
     url = f'https://kr.api.riotgames.com/lol/league/v4/entries/by-puuid/{puuid}?api_key={my_api}'
     res = requests.get(url, headers=headers)
-    time.sleep(0.85)
+    time.sleep(0.82)
 
     for i in range(len(res.json())):
         if res.json()[i]['queueType'] != 'RANKED_SOLO_5x5':
@@ -78,29 +81,8 @@ for i in range(0, 20):
     summ = summoners[i]
     puuid = summ['puuid']
     match_ids = get_matchlist(puuid, count=100)
-#%%
-
-summoners = get_summoners_by_division(tier, division)
-#%%
-summoners = get_summoners_by_division(tier, division)
-df_summon = pd.DataFrame(summoners)
-#%%
-summoners
-#%%
-match_ids = get_matchlist(summoners[0]['puuid'])
-#%%
-matchdata = get_match_detail(match_ids[0])
 
 #%%
-matchdata['info']['participants'][1]['win']
-#%%
-matchdata['info']['participants'][1]['win']
-
-#%%
-[summoners[0]['puuid']]*10
-
-#%%
-#platinum
 tier = 'PLATINUM' 
 division = ['IV']
 df_temp = pd.DataFrame()
@@ -115,6 +97,16 @@ for div in division:
         match_ids = get_matchlist(puuid, count=100)
         
         summoner_puuid = [summoners[i]['puuid']]*10
+        if tier:
+            tiers = [tier]*10
+        
+        divisions = [div]*10
+
+        if summoners[i]['hotStreak'] == True:
+            hotstreaks = [True]*10
+        else:
+            hotstreaks = [False]*10
+
         ct_match = 0
         for match in match_ids:
             print(f'match_number_by_each_summoner {ct}:', ct_match)
@@ -133,12 +125,14 @@ for div in division:
                     win_or_lose.extend([True]*5)
                     win_or_lose.extend([False]*5)
 
-            temp = pd.DataFrame([summoner_puuid, matches, participants, win_or_lose]).T
+            temp = pd.DataFrame([summoner_puuid, tiers, divisions, matches, participants, win_or_lose, hotstreaks]).T
             df_temp = pd.concat([df_temp, temp], ignore_index=True, axis=0)
 
 print('done')
 
 # %%
-print('done')
+temp
 # %%
-
+temp_match_ids = get_matchlist(summoners[90]['puuid'], count=100)
+# %%
+temp_match_ids
